@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="movieAction" class="UserAction.MovieAction" scope="prototype">
+        <property name="movieService" ref="movieService"/>
+    </bean>
+
+
+    <bean id="movieService" class="service.MovieService">
+        <property name="movieDao" ref="movieDaoImpl"/>
+    </bean>
+
+
+    <bean id="movieDaoImpl" class="UserDao.MovieDaoImpl">
+        <property name="sessionFactory" ref="SessionFactory"/>
+    </bean>
+
+</beans>

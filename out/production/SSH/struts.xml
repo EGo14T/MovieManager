@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!--设置上传文件的大小-->
+    <constant name="struts.multipart.maxSize" value="209715"></constant>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+
+    <package name="userLogin" extends="struts-default">
+        <!--开启通配符的使用-->
+        <global-allowed-methods>regex:.*</global-allowed-methods>
+
+
+        <action name="login_*" class="userAction" method="{1}">
+            <result name="login">/mainUI/main.jsp</result>
+            <result name="error">error.jsp</result>
+        </action>
+
+        <action name="reg_*" class="registerAction" method="{1}">
+            <result name="register">success.jsp</result>
+        </action>
+
+        <action name="movie_*" class="movieAction" method="{1}">
+            <result name="add">success.jsp</result>
+            <result name="input">/Movie/UploadError.jsp</result>
+            <!--到列表页面-->
+            <result name="list">/Movie/checkMovie.jsp</result>
+            <!--删除之后-->
+            <result name="delete" type="redirectAction">movie_listMovie</result>
+            <!--到修改页面-->
+            <result name="showMovie">/Movie/editMovie.jsp</result>
+            <!--修改之后-->
+            <result name="update" type="redirectAction">movie_listMovie</result>
+            <interceptor-ref name="defaultStack">
+                <!-- 配置允许上传的文件类型，多个用","分隔 -->
+                <param name="fileUpload.allowedExtensions">
+                    avi,mp4,mkv,flv,rmvb,3gp,mov
+                </param>
+            </interceptor-ref>
+        </action>
+
+        <action name="admin_*" class="adminAction" method="{1}">
+            <result name="list">/Admin/checkAdmin.jsp</result>
+            <result name="showAdmin">/Admin/editAdmin.jsp</result>
+            <result name="update" type="redirectAction">admin_listAdmin</result>
+
+            <result name="editPassword">/Admin/editPassword.jsp</result>
+            <result name="updatePassword">loginout.jsp</result>
+        </action>
+
+        <action name="public" class="UserAction.PublicAction">
+            <result name="success">/News/success.jsp</result>
+            <interceptor-ref name="defaultStack"/>
+        </action>
+    </package>
+</struts>

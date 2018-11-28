@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.entity.MovieEntity" table="movie">
+        <id name="movieId" column="movieId">
+            <generator class="native"></generator>
+        </id>
+        <property name="movieTime">
+            <column name="movieTime" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+        <property name="movieKind">
+            <column name="movieKind" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+        <property name="movieName">
+            <column name="movieName" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+
+        <property name="movieArea">
+            <column name="movieArea" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+
+        <property name="movieMan">
+            <column name="movieMan" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.entity.AdminEntity" table="adminmsg">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+
+        <property name="adminName">
+            <column name="adminName" sql-type="varchar(30)" length="30" not-null="false"/>
+        </property>
+
+        <property name="adminSex">
+            <column name="adminSex" sql-type="varchar(30)" length="30" not-null="false"/>
+        </property>
+
+        <property name="adminAge">
+            <column name="adminAge" sql-type="varchar(30)" length="30" not-null="false"/>
+        </property>
+
+        <property name="adminTel">
+            <column name="adminTel" sql-type="varchar(30)" length="30" not-null="false"/>
+        </property>
+
+        <property name="adminAddress">
+            <column name="adminAddress" sql-type="varchar(30)" length="30" not-null="false"/>
+        </property>
+
+        <property name="userName">
+            <column name="userName" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+
+        <property name="password">
+            <column name="password" sql-type="varchar(30)" length="30" not-null="true"/>
+        </property>
+
+
+    </class>
+</hibernate-mapping>
